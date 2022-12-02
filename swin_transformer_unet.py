@@ -3,7 +3,7 @@ from einops import rearrange
 
 from self_attention_cv.transunet.bottleneck_layer import Bottleneck
 from self_attention_cv.transunet.decoder import Up, SignleConv
-from self_attention_cv.vit import ViT
+# from self_attention_cv.vit import ViT
 
 import torch
 from torch import nn, einsum
