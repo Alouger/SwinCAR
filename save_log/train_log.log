@@ -1,0 +1,218 @@
+[2022-12-02 04:14:11,688][<ipython-input-17-3602d7720265>][line:101][INFO] =========================================================================================================
+Layer (type:depth-idx)                                  Output Shape              Param #
+=========================================================================================================
+SwinCAR                                                 --                        --
+├─SwinTransformerSys: 1                                 --                        --
+│    └─ModuleList: 2-1                                  --                        --
+│    └─ModuleList: 2-2                                  --                        --
+│    └─ModuleList: 2-3                                  --                        --
+├─SwinTransformerSys: 1-1                               [8, 2, 224, 224]          --
+│    └─DoubleConv: 2-4                                  [8, 48, 224, 224]         --
+│    │    └─Sequential: 3-1                             [8, 48, 224, 224]         22,320
+│    └─MaxPool2d: 2-5                                   [8, 48, 112, 112]         --
+│    └─PatchEmbed: 2-6                                  [8, 3136, 96]             --
+│    │    └─Conv2d: 3-2                                 [8, 96, 56, 56]           4,704
+│    │    └─LayerNorm: 3-3                              [8, 3136, 96]             192
+│    └─Dropout: 2-7                                     [8, 3136, 96]             --
+│    └─ModuleList: 2-1                                  --                        --
+│    │    └─BasicLayer: 3-4                             [8, 784, 192]             299,190
+│    │    └─BasicLayer: 3-5                             [8, 196, 384]             1,188,204
+│    │    └─BasicLayer: 3-6                             [8, 49, 768]              4,735,704
+│    │    └─BasicLayer: 3-7                             [8, 49, 768]              14,183,856
+│    └─LayerNorm: 2-8                                   [8, 49, 768]              1,536
+│    └─Up1: 2-9                                         [8, 384, 14, 14]          --
+│    │    └─Upsample: 3-8                               [8, 768, 14, 14]          --
+│    │    └─DoubleConv: 3-9                             [8, 384, 14, 14]          5,310,720
+│    └─Up2: 2-10                                        [8, 192, 28, 28]          --
+│    │    └─Upsample: 3-10                              [8, 384, 28, 28]          --
+│    │    └─Recovery_CoordAtt: 3-11                     [8, 576, 28, 28]          84,744
+│    │    └─SignleConv: 3-12                            [8, 192, 28, 28]          995,904
+│    └─Up3: 2-11                                        [8, 96, 56, 56]           --
+│    │    └─Upsample: 3-13                              [8, 192, 56, 56]          --
+│    │    └─Recovery_CoordAtt: 3-14                     [8, 288, 56, 56]          21,636
+│    │    └─SignleConv: 3-15                            [8, 96, 56, 56]           249,120
+│    └─Up4: 2-12                                        [8, 48, 112, 112]         --
+│    │    └─Upsample: 3-16                              [8, 96, 112, 112]         --
+│    │    └─Recovery_CoordAtt: 3-17                     [8, 144, 112, 112]        5,634
+│    │    └─SignleConv: 3-18                            [8, 48, 112, 112]         62,352
+│    └─FinalUp: 2-13                                    [8, 24, 224, 224]         --
+│    │    └─Upsample: 3-19                              [8, 48, 224, 224]         --
+│    │    └─DoubleConv: 3-20                            [8, 24, 224, 224]         15,696
+│    └─Conv2d: 2-14                                     [8, 2, 224, 224]          48
+=========================================================================================================
+Total params: 27,138,189
+Trainable params: 27,138,189
+Non-trainable params: 0
+Total mult-adds (G): 42.64
+=========================================================================================================
+Input size (MB): 4.82
+Forward/backward pass size (MB): 1978.68
+Params size (MB): 108.55
+Estimated Total Size (MB): 2092.05
+=========================================================================================================
+[2022-12-02 04:14:11,704][<ipython-input-17-3602d7720265>][line:102][INFO] start training!
+[2022-12-02 04:15:40,411][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[1/100]	 train loss=0.31194089	 train dice=0.85831680	 lr=0.00010000
+
+[2022-12-02 04:15:40,420][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.8583173155784607
+
+[2022-12-02 04:15:40,425][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.931481036307149	 pet=0.7851525670462136	 score=0.8583168024298086
+
+[2022-12-02 04:15:50,476][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[1/100]	 iteration:184 val loss=0.22095147	 val dice=0.90090890	 lr=0.00010000
+[2022-12-02 04:15:50,487][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9558961174410322	 pet=0.8459216897254405	 score=0.9009087681770325
+
+[2022-12-02 04:17:18,561][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[2/100]	 train loss=0.19139552	 train dice=0.91118656	 lr=0.00009978
+
+[2022-12-02 04:17:18,569][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9111859798431396
+
+[2022-12-02 04:17:18,574][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9605874267510989	 pet=0.8617856979154938	 score=0.9111865627636548
+
+[2022-12-02 04:17:28,540][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[2/100]	 iteration:184 val loss=0.16844399	 val dice=0.91170565	 lr=0.00009978
+[2022-12-02 04:17:28,545][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9604069350854211	 pet=0.8630043686084126	 score=0.9117056727409363
+
+[2022-12-02 04:18:57,455][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[3/100]	 train loss=0.13777844	 train dice=0.92831317	 lr=0.00009911
+
+[2022-12-02 04:18:57,464][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9283133149147034
+
+[2022-12-02 04:18:57,469][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9685288249155244	 pet=0.8880975049540454	 score=0.928313166548629
+
+[2022-12-02 04:19:07,392][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[3/100]	 iteration:184 val loss=0.13353836	 val dice=0.92337294	 lr=0.00009911
+[2022-12-02 04:19:07,401][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9670430907736653	 pet=0.8797027860646662	 score=0.9233728051185608
+
+[2022-12-02 04:20:36,200][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[4/100]	 train loss=0.10937436	 train dice=0.93840733	 lr=0.00009800
+
+[2022-12-02 04:20:36,209][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9384072422981262
+
+[2022-12-02 04:20:36,214][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9731709894720828	 pet=0.9036436678054961	 score=0.9384073288001739
+
+[2022-12-02 04:20:46,173][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[4/100]	 iteration:184 val loss=0.10650618	 val dice=0.93536031	 lr=0.00009800
+[2022-12-02 04:20:46,181][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9729760694115058	 pet=0.8977445435264836	 score=0.9353603720664978
+
+[2022-12-02 04:22:14,990][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[5/100]	 train loss=0.09172596	 train dice=0.94558656	 lr=0.00009646
+
+[2022-12-02 04:22:14,999][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9455868005752563
+
+[2022-12-02 04:22:15,004][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.97640367955077	 pet=0.9147694497117067	 score=0.9455865643084694
+
+[2022-12-02 04:22:24,961][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[5/100]	 iteration:184 val loss=0.09967538	 val dice=0.93520803	 lr=0.00009646
+[2022-12-02 04:22:24,969][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9734527731071347	 pet=0.89696328892656	 score=0.9352080225944519
+
+                            [8, 48, 224, 224]         --
+│    │    └─DoubleConv: 3-20                            [8, 24, 224, 224]         15,696
+│    └─Conv2d: 2-14                                     [8, 2, 224, 224]          48
+=========================================================================================================
+Total params: 27,138,189
+Trainable params: 27,138,189
+Non-trainable params: 0
+Total mult-adds (G): 42.64
+=========================================================================================================
+Input size (MB): 4.82
+Forward/backward pass size (MB): 1978.68
+Params size (MB): 108.55
+Estimated Total Size (MB): 2092.05
+=========================================================================================================
+[2022-12-02 04:14:11,704][<ipython-input-17-3602d7720265>][line:102][INFO] start training!
+[2022-12-02 04:15:40,411][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[1/100]	 train loss=0.31194089	 train dice=0.85831680	 lr=0.00010000
+
+[2022-12-02 04:15:40,420][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.8583173155784607
+
+[2022-12-02 04:15:40,425][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.931481036307149	 pet=0.7851525670462136	 score=0.8583168024298086
+
+[2022-12-02 04:15:50,476][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[1/100]	 iteration:184 val loss=0.22095147	 val dice=0.90090890	 lr=0.00010000
+[2022-12-02 04:15:50,487][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9558961174410322	 pet=0.8459216897254405	 score=0.9009087681770325
+
+[2022-12-02 04:17:18,561][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[2/100]	 train loss=0.19139552	 train dice=0.91118656	 lr=0.00009978
+
+[2022-12-02 04:17:18,569][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9111859798431396
+
+[2022-12-02 04:17:18,574][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9605874267510989	 pet=0.8617856979154938	 score=0.9111865627636548
+
+[2022-12-02 04:17:28,540][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[2/100]	 iteration:184 val loss=0.16844399	 val dice=0.91170565	 lr=0.00009978
+[2022-12-02 04:17:28,545][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9604069350854211	 pet=0.8630043686084126	 score=0.9117056727409363
+
+[2022-12-02 04:18:57,455][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[3/100]	 train loss=0.13777844	 train dice=0.92831317	 lr=0.00009911
+
+[2022-12-02 04:18:57,464][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9283133149147034
+
+[2022-12-02 04:18:57,469][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9685288249155244	 pet=0.8880975049540454	 score=0.928313166548629
+
+[2022-12-02 04:19:07,392][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[3/100]	 iteration:184 val loss=0.13353836	 val dice=0.92337294	 lr=0.00009911
+[2022-12-02 04:19:07,401][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9670430907736653	 pet=0.8797027860646662	 score=0.9233728051185608
+
+[2022-12-02 04:20:36,200][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[4/100]	 train loss=0.10937436	 train dice=0.93840733	 lr=0.00009800
+
+[2022-12-02 04:20:36,209][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9384072422981262
+
+[2022-12-02 04:20:36,214][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9731709894720828	 pet=0.9036436678054961	 score=0.9384073288001739
+
+[2022-12-02 04:20:46,173][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[4/100]	 iteration:184 val loss=0.10650618	 val dice=0.93536031	 lr=0.00009800
+[2022-12-02 04:20:46,181][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9729760694115058	 pet=0.8977445435264836	 score=0.9353603720664978
+
+[2022-12-02 04:22:14,990][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[5/100]	 train loss=0.09172596	 train dice=0.94558656	 lr=0.00009646
+
+[2022-12-02 04:22:14,999][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9455868005752563
+
+[2022-12-02 04:22:15,004][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.97640367955077	 pet=0.9147694497117067	 score=0.9455865643084694
+
+[2022-12-02 04:22:24,961][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[5/100]	 iteration:184 val loss=0.09967538	 val dice=0.93520803	 lr=0.00009646
+[2022-12-02 04:22:24,969][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9734527731071347	 pet=0.89696328892656	 score=0.9352080225944519
+
+                            [8, 48, 224, 224]         --
+│    │    └─DoubleConv: 3-20                            [8, 24, 224, 224]         15,696
+│    └─Conv2d: 2-14                                     [8, 2, 224, 224]          48
+=========================================================================================================
+Total params: 27,138,189
+Trainable params: 27,138,189
+Non-trainable params: 0
+Total mult-adds (G): 42.64
+=========================================================================================================
+Input size (MB): 4.82
+Forward/backward pass size (MB): 1978.68
+Params size (MB): 108.55
+Estimated Total Size (MB): 2092.05
+=========================================================================================================
+[2022-12-02 04:14:11,704][<ipython-input-17-3602d7720265>][line:102][INFO] start training!
+[2022-12-02 04:15:40,411][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[1/100]	 train loss=0.31194089	 train dice=0.85831680	 lr=0.00010000
+
+[2022-12-02 04:15:40,420][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.8583173155784607
+
+[2022-12-02 04:15:40,425][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.931481036307149	 pet=0.7851525670462136	 score=0.8583168024298086
+
+[2022-12-02 04:15:50,476][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[1/100]	 iteration:184 val loss=0.22095147	 val dice=0.90090890	 lr=0.00010000
+[2022-12-02 04:15:50,487][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9558961174410322	 pet=0.8459216897254405	 score=0.9009087681770325
+
+[2022-12-02 04:17:18,561][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[2/100]	 train loss=0.19139552	 train dice=0.91118656	 lr=0.00009978
+
+[2022-12-02 04:17:18,569][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9111859798431396
+
+[2022-12-02 04:17:18,574][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9605874267510989	 pet=0.8617856979154938	 score=0.9111865627636548
+
+[2022-12-02 04:17:28,540][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[2/100]	 iteration:184 val loss=0.16844399	 val dice=0.91170565	 lr=0.00009978
+[2022-12-02 04:17:28,545][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9604069350854211	 pet=0.8630043686084126	 score=0.9117056727409363
+
+[2022-12-02 04:18:57,455][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[3/100]	 train loss=0.13777844	 train dice=0.92831317	 lr=0.00009911
+
+[2022-12-02 04:18:57,464][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9283133149147034
+
+[2022-12-02 04:18:57,469][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9685288249155244	 pet=0.8880975049540454	 score=0.928313166548629
+
+[2022-12-02 04:19:07,392][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[3/100]	 iteration:184 val loss=0.13353836	 val dice=0.92337294	 lr=0.00009911
+[2022-12-02 04:19:07,401][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9670430907736653	 pet=0.8797027860646662	 score=0.9233728051185608
+
+[2022-12-02 04:20:36,200][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[4/100]	 train loss=0.10937436	 train dice=0.93840733	 lr=0.00009800
+
+[2022-12-02 04:20:36,209][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9384072422981262
+
+[2022-12-02 04:20:36,214][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.9731709894720828	 pet=0.9036436678054961	 score=0.9384073288001739
+
+[2022-12-02 04:20:46,173][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[4/100]	 iteration:184 val loss=0.10650618	 val dice=0.93536031	 lr=0.00009800
+[2022-12-02 04:20:46,181][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9729760694115058	 pet=0.8977445435264836	 score=0.9353603720664978
+
+[2022-12-02 04:22:14,990][<ipython-input-13-df2f5144638b>][line:112][INFO] Epoch:[5/100]	 train loss=0.09172596	 train dice=0.94558656	 lr=0.00009646
+
+[2022-12-02 04:22:14,999][<ipython-input-13-df2f5144638b>][line:113][INFO] train score=0.9455868005752563
+
+[2022-12-02 04:22:15,004][<ipython-input-13-df2f5144638b>][line:117][INFO] train background=0.97640367955077	 pet=0.9147694497117067	 score=0.9455865643084694
+
+[2022-12-02 04:22:24,961][<ipython-input-13-df2f5144638b>][line:174][INFO] Epoch:[5/100]	 iteration:184 val loss=0.09967538	 val dice=0.93520803	 lr=0.00009646
+[2022-12-02 04:22:24,969][<ipython-input-13-df2f5144638b>][line:177][INFO] val background=0.9734527731071347	 pet=0.89696328892656	 score=0.9352080225944519
+
